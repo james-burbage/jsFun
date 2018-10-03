@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 const { instructors, cohorts } = require("./datasets/turing");
 const { cakes } = require("./datasets/cakes");
 const { pie } = require("./datasets/pie");
@@ -5,6 +6,16 @@ const { clubs } = require("./datasets/clubs");
 const { classrooms } = require("./datasets/classrooms");
 const { mods } = require("./datasets/mods");
 const { bosses, sidekicks } = require("./datasets/bosses");
+=======
+const { instructors, cohorts } = require('./datasets/turing');
+const { constellations, stars } = require('./datasets/astronomy');
+const { cakes } = require('./datasets/cakes');
+const { pie } = require('./datasets/pie');
+const { clubs } = require('./datasets/clubs');
+const { classrooms } = require('./datasets/classrooms');
+const { mods } = require('./datasets/mods');
+const { bosses, sidekicks } = require('./datasets/bosses');
+>>>>>>> 0dacf94a1d3b7d3f255ebdc730e8ceb0a2939d68
 
 // DATASET: instructors, cohorts from ./datasets/turing
 const turingPrompts = {
@@ -342,11 +353,156 @@ const bossPrompts = {
   }
 };
 
+<<<<<<< HEAD
+=======
+
+
+
+
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+
+
+
+
+
+
+// DATASET: kitties from ./datasets/kitties
+const kittyPrompts = {
+  orangeKittyNames() {
+    // Return an array of just the names of kitties who are orange e.g.
+    // ['Tiger', 'Snickers']
+
+    const result = 'REPLACE WITH YOUR RESULT HERE';
+    return result;
+
+    // Annotation:
+    // Write your annotation here as a comment
+  },
+
+  sortByAge() {
+    // Sort the kitties by their age
+
+    const result = 'REPLACE WITH YOUR RESULT HERE';
+    return result;
+
+    // Annotation:
+    // Write your annotation here as a comment
+  },
+
+  growUp() {
+    // Return an array of kitties who have all grown up by 2 years e.g.
+    // [{
+    //   name: 'Felicia',
+    //   age: 4,
+    //   color: 'grey'
+    // },
+    // {
+    //   name: 'Tiger',
+    //   age: 7,
+    //   color: 'orange'
+    // },
+    // ...etc]
+  };
+};
+
+
+
+
+
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+
+
+
+
+
+
+// DATASET: bosses, sidekicks from ./datasets/bosses
+const astronomyPrompts = {
+  starsInConstellations() {
+    // Return an array of all the stars that appear in any of the constellations
+    // listed in the constellations object e.g.
+    // [ 
+    //   { name: 'Rigel',
+    //     visualMagnitude: 0.13,
+    //     constellation: 'Orion',
+    //     lightYearsFromEarth: 860,
+    //     color: 'blue' },
+    //   { name: 'Betelgeuse',
+    //     visualMagnitude: 0.5,
+    //     constellation: 'Orion',
+    //     lightYearsFromEarth: 640,
+    //     color: 'red' }
+    // ]
+
+    const result = 'REPLACE WITH YOUR RESULT HERE';
+    return result;
+
+    // Annotation:
+    // Write your annotation here as a comment
+  },
+
+  starsByColor() {
+    // Return an object with keys of the different colors of the stars,
+    // whose values are arrays containing the star objects that match e.g.
+    // {
+    //   blue: [{obj}, {obj}, {obj}, {obj}, {obj}],
+    //   white: [{obj}, {obj}],
+    //   yellow: [{obj}, {obj}],
+    //   orange: [{obj}],
+    //   red: [{obj}]
+    // }
+
+    const result = 'REPLACE WITH YOUR RESULT HERE';
+    return result;
+
+    // Annotation:
+    // Write your annotation here as a comment
+  },
+
+  constellationsStarsExistIn() {
+    // Return an array of the names of the constellations that the brightest stars are part of e.g.
+    // [ 'Canis Major',
+    //   'Carina',
+    //   'Boötes',
+    //   'Lyra',
+    //   'Auriga',
+    //   'Orion',
+    //   'Canis Minor',
+    //   'Eridanus',
+    //   'Orion',
+    //   'Centaurus' ]
+
+    const result = 'REPLACE WITH YOUR RESULT HERE';
+    return result;
+
+    // Annotation:
+    // Write your annotation here as a comment
+  }
+};
+
+
+
+>>>>>>> 0dacf94a1d3b7d3f255ebdc730e8ceb0a2939d68
 module.exports = {
   turingPrompts,
   piePrompts,
   clubPrompts,
   bossPrompts,
   classPrompts,
+<<<<<<< HEAD
   modPrompts
 };
+=======
+  modPrompts,
+  kittyPrompts,
+  astronomyPrompts
+};
+>>>>>>> 0dacf94a1d3b7d3f255ebdc730e8ceb0a2939d68
