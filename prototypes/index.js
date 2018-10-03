@@ -1,23 +1,32 @@
-const { instructors, cohorts } = require('./datasets/turing');
-const { cakes } = require('./datasets/cakes');
-const { pie } = require('./datasets/pie');
-const { clubs } = require('./datasets/clubs');
-const { classrooms } = require('./datasets/classrooms');
-const { mods } = require('./datasets/mods');
-const { bosses, sidekicks } = require('./datasets/bosses');
+const { instructors, cohorts } = require("./datasets/turing");
+const { cakes } = require("./datasets/cakes");
+const { pie } = require("./datasets/pie");
+const { clubs } = require("./datasets/clubs");
+const { classrooms } = require("./datasets/classrooms");
+const { mods } = require("./datasets/mods");
+const { bosses, sidekicks } = require("./datasets/bosses");
 
 // DATASET: instructors, cohorts from ./datasets/turing
 const turingPrompts = {
   studentsForEachInstructor() {
     // Return an array of instructors where each instructor is an object
-    // with a name and the count of students in their module. e.g. 
+    // with a name and the count of students in their module. e.g.
     // [
     //  { name: 'Pam', studentCount: 21 },
     //  { name: 'Robbie', studentCount: 18 }
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
+    const result = instructors.map(instructor => {
+      let newInstructor = { name: instructor.name };
+
+      let matchingCohort = cohorts.find(cohort => {
+        return cohort.module === instructor.module;
+      });
+
+      newInstructor.studentCount = matchingCohort.studentCount;
+      return newInstructor;
+    });
+    result;
 
     // Annotation:
     // Write your annotation here as a comment
@@ -25,12 +34,12 @@ const turingPrompts = {
 
   studentsPerInstructor() {
     // Return an object of how many students per teacher there are in each cohort e.g.
-    // { 
+    // {
     // cohort1806: 9,
     // cohort1804: 10.5
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = "REPLACE WITH YOUR RESULT HERE";
     return result;
 
     // Annotation:
@@ -40,14 +49,14 @@ const turingPrompts = {
   modulesPerTeacher() {
     // Return an object where each key is an instructor name and each value is
     // an array of the modules they can teach based on their skills. e.g.:
-    // { 
+    // {
     //   Leta: [2, 4],
     //   Nathaniel: [2],
     //   Robbie: [4],
     //   Pam: [2, 4]
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = "REPLACE WITH YOUR RESULT HERE";
     return result;
 
     // Annotation:
@@ -57,14 +66,14 @@ const turingPrompts = {
   curriculumPerTeacher() {
     // Return an object where each key is a curriculum topic and each value is
     // an array of instructors who teach that topic e.g.:
-    // { 
+    // {
     //   html: [ 'Travis', 'Louisa' ],
     //   css: [ 'Travis', 'Louisa' ],
     //   javascript: [ 'Travis', 'Louisa', 'Christie', 'Will' ],
     //   recursion: [ 'Pam', 'Leta' ]
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = "REPLACE WITH YOUR RESULT HERE";
     return result;
 
     // Annotation:
@@ -72,20 +81,11 @@ const turingPrompts = {
   }
 };
 
-
-
-
-
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
-
-
-
-
-
 
 // DATASET: mods from ./datasets/mods
 const modPrompts = {
@@ -99,7 +99,7 @@ const modPrompts = {
     //   { mod: 4, studentsPerInstructor: 8 }
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = "REPLACE WITH YOUR RESULT HERE";
     return result;
 
     // Annotation:
@@ -107,21 +107,11 @@ const modPrompts = {
   }
 };
 
-
-
-
-
-
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
-
-
-
-
-
 
 // DATASET: classrooms from ./datasets/classrooms
 const classPrompts = {
@@ -134,7 +124,7 @@ const classPrompts = {
     //   { roomLetter: 'G', program: 'FE', capacity: 29 }
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = "REPLACE WITH YOUR RESULT HERE";
     return result;
 
     // Annotation:
@@ -144,12 +134,12 @@ const classPrompts = {
   totalCapacities() {
     // Create an object where the keys are 'feCapacity' and 'beCapacity',
     // and the values are the total capacity for all classrooms in each program e.g.
-    // { 
+    // {
     //   feCapacity: 110,
     //   beCapacity: 96
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = "REPLACE WITH YOUR RESULT HERE";
     return result;
 
     // Annotation:
@@ -159,7 +149,7 @@ const classPrompts = {
   sortByCapacity() {
     // Return the array of classrooms sorted by their capacity (least capacity to greatest)
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = "REPLACE WITH YOUR RESULT HERE";
     return result;
 
     // Annotation:
@@ -167,48 +157,43 @@ const classPrompts = {
   }
 };
 
-
-
-
-
-
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
-
-
-
-
-
 
 // DATASET: cakes from ./datasets/cakes
 const cakePrompts = {
-  allToppings() {
     // Return an array of all unique toppings (no duplicates) needed to bake
     // every cake in the dataset e.g.
     // ['dutch process cocoa', 'toasted sugar', 'smoked sea salt', 'berries', ..etc]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
+    const result = cakes.reduce((acc, cake) => {
+      cake.toppings.forEach((topping) => {
+        if(!acc.includes(topping)) {
+          acc.push(topping);
+        }
+      })
+      return acc;
+    }, []);
+    result;
 
     // Annotation:
     // Write your annotation here as a comment
-  },
 
   groceryList() {
     // I need to make a grocery list. Please give me an object where the keys are
     // each topping, and the values are the amount of that topping I need to buy e.g.
-    // { 
+    // {
     //    'dutch process cocoa': 1,
     //    'toasted sugar': 3,
     //    'smoked sea salt': 3,
-    //    'berries': 2, 
+    //    'berries': 2,
     //    ...etc
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = "REPLACE WITH YOUR RESULT HERE";
     return result;
 
     // Annotation:
@@ -218,14 +203,17 @@ const cakePrompts = {
   stockPerCake() {
     // Return an array of objects that include just the flavor of the cake and how
     // much of that cake is in stock e.g.
-    // [ 
+    // [
     //    { flavor: 'honey', inStock: 3 },
     //    { flavor: 'vanilla', inStock: 21 },
     //    ..etc
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
+    const result = cakes.map((cake) => {
+      let obj = {flavor: cake.cakeFlavor, inStock: cake.inStock}
+      return obj
+    });
+    result;
 
     // Annotation:
     // Write your annotation here as a comment
@@ -235,8 +223,11 @@ const cakePrompts = {
     // Return the total amout of cakes in stock e.g.
     // 59
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
+    const result = cakes.reduce((acc, cake) => {
+      acc += cake.inStock;
+      return acc
+    }, 0);
+    result;
 
     // Annotation:
     // Write your annotation here as a comment
@@ -262,24 +253,24 @@ const cakePrompts = {
     // },
     // ..etc
     // ]
+
+    const result = cakes.filter(currentCake => {
+      return currentCake.inStock;
+    });
+
+    //Write your annontation here aas a comment,
+    //I'm recieeving an array of cakes, and I want
+    //a subset of that array, so I'm going to reach for filter,
+    //My filter callback will return only the cakes
+    //who have an inStock value
   }
 };
 
-
-
-
-
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
-
-
-
-
-
-
 
 // DATASET: pie from ./datasets/pie
 const piePrompts = {
@@ -293,7 +284,7 @@ const piePrompts = {
     //   sugar: 100
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = "REPLACE WITH YOUR RESULT HERE";
     return result;
 
     // Annotation:
@@ -301,33 +292,24 @@ const piePrompts = {
   }
 };
 
-
-
-
-
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
-
-
-
-
-
 
 // DATASET: clubs from ./datasets/clubs
 const clubPrompts = {
   membersBelongingToClubs() {
     // Create an object whose keys are the names of people, and whose values are
-    // arrays that include the names of the clubs that person is a part of. e.g. 
+    // arrays that include the names of the clubs that person is a part of. e.g.
     // {
     //   Louisa: ['Drama', 'Art'],
     //   Pam: ['Drama', 'Art', 'Chess'],
     //   ...etc
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = "REPLACE WITH YOUR RESULT HERE";
     return result;
 
     // Annotation:
@@ -335,20 +317,11 @@ const clubPrompts = {
   }
 };
 
-
-
-
-
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
-
-
-
-
-
 
 // DATASET: bosses, sidekicks from ./datasets/bosses
 const bossPrompts = {
@@ -361,15 +334,13 @@ const bossPrompts = {
     //   { bossName: 'Scar', sidekickLoyalty: 16 }
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = "REPLACE WITH YOUR RESULT HERE";
     return result;
 
     // Annotation:
     // Write your annotation here as a comment
   }
 };
-
-
 
 module.exports = {
   turingPrompts,
