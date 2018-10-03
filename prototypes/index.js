@@ -1,12 +1,3 @@
-<<<<<<< HEAD
-const { instructors, cohorts } = require("./datasets/turing");
-const { cakes } = require("./datasets/cakes");
-const { pie } = require("./datasets/pie");
-const { clubs } = require("./datasets/clubs");
-const { classrooms } = require("./datasets/classrooms");
-const { mods } = require("./datasets/mods");
-const { bosses, sidekicks } = require("./datasets/bosses");
-=======
 const { instructors, cohorts } = require('./datasets/turing');
 const { constellations, stars } = require('./datasets/astronomy');
 const { cakes } = require('./datasets/cakes');
@@ -15,7 +6,6 @@ const { clubs } = require('./datasets/clubs');
 const { classrooms } = require('./datasets/classrooms');
 const { mods } = require('./datasets/mods');
 const { bosses, sidekicks } = require('./datasets/bosses');
->>>>>>> 0dacf94a1d3b7d3f255ebdc730e8ceb0a2939d68
 
 // DATASET: instructors, cohorts from ./datasets/turing
 const turingPrompts = {
@@ -194,7 +184,7 @@ const cakePrompts = {
     // Write your annotation here as a comment
 
   groceryList() {
-    // I need to make a grocery list. Please give me an object where the keys are
+// I need to make a grocery list. Please give me an object where the keys are
     // each topping, and the values are the amount of that topping I need to buy e.g.
     // {
     //    'dutch process cocoa': 1,
@@ -204,8 +194,17 @@ const cakePrompts = {
     //    ...etc
     // }
 
-    const result = "REPLACE WITH YOUR RESULT HERE";
-    return result;
+    const result = cakes.reduce((acc, cake) => {
+      cake.toppings.forEach((topping) => {
+        if (!acc[topping]) {
+          acc[topping] = 1;
+        } else {
+          acc[topping] ++;
+        }
+      })
+      return acc
+    }, {});
+    result;
 
     // Annotation:
     // Write your annotation here as a comment
