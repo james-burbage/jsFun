@@ -293,9 +293,12 @@ const piePrompts = {
     //   cinnamon: 50,
     //   sugar: 100
     // }
+    
+    const result = pie.map((slice) => {
+      console.log(slice.ingredients)
+    });
+    result;
 
-    const result = "REPLACE WITH YOUR RESULT HERE";
-    return result;
 
     // Annotation:
     // Write your annotation here as a comment
@@ -311,7 +314,7 @@ const piePrompts = {
 // DATASET: clubs from ./datasets/clubs
 const clubPrompts = {
   membersBelongingToClubs() {
-    // Create an object whose keys are the names of people, and whose values are
+// Create an object whose keys are the names of people, and whose values are
     // arrays that include the names of the clubs that person is a part of. e.g.
     // {
     //   Louisa: ['Drama', 'Art'],
@@ -319,8 +322,20 @@ const clubPrompts = {
     //   ...etc
     // }
 
-    const result = "REPLACE WITH YOUR RESULT HERE";
-    return result;
+
+    const result = clubs.reduce((accu, club) => {
+      club.members.forEach(member => {
+        if (!accu[member]) {
+          accu[member] = clubs.filter(club => {
+            if (club.members.includes(member)) {
+              return club
+            }
+          }).map((club) => club.club);
+        }
+      })
+      return accu
+    }, {})
+    result;
 
     // Annotation:
     // Write your annotation here as a comment
@@ -344,16 +359,23 @@ const bossPrompts = {
     //   { bossName: 'Scar', sidekickLoyalty: 16 }
     // ]
 
-    const result = "REPLACE WITH YOUR RESULT HERE";
-    return result;
+    const bossKeys = Object.keys(bosses)
+    const result = bossKeys.map((boss) => {
+      let loyaltyNum = sidekicks.reduce((accu, sidekick) => {
+        if (sidekick.boss === bosses[boss].name) {
+          accu += sidekick.loyaltyToBoss;
+        }
+        return accu;
+      }, 0)
+      return { bossName: bosses[boss].name, sidekickLoyalty: loyaltyNum };
+    });
+    result.reverse()
 
     // Annotation:
     // Write your annotation here as a comment
   }
 };
 
-<<<<<<< HEAD
-=======
 
 
 
@@ -375,25 +397,32 @@ const kittyPrompts = {
     // Return an array of just the names of kitties who are orange e.g.
     // ['Tiger', 'Snickers']
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
+    const orangeKittens = kitties.filter((kitten) => {
+      return kitten.color === 'orange';
+    }).map(kitten => kitten.name);
+
+    orangeKittens;
+
+    
 
     // Annotation:
     // Write your annotation here as a comment
   },
 
   sortByAge() {
-    // Sort the kitties by their age
+        // Sort the kitties by their age
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
-
-    // Annotation:
-    // Write your annotation here as a comment
+        const result = kitties.sort((a,b) => {
+          return b.age - a.age;
+        });
+        result;
+    
+        // Annotation:
+        // Write your annotation here as a comment
   },
 
   growUp() {
-    // Return an array of kitties who have all grown up by 2 years e.g.
+        // Return an array of kitties who have all grown up by 2 years e.g.
     // [{
     //   name: 'Felicia',
     //   age: 4,
@@ -405,6 +434,15 @@ const kittyPrompts = {
     //   color: 'orange'
     // },
     // ...etc]
+
+    const result = kitties.map((kitten) => {
+      kitten.age += 2;
+      return kitten
+    });
+    result;
+    // Annotation:
+    // Write your annotation here as a comment
+
   };
 };
 
@@ -489,7 +527,6 @@ const astronomyPrompts = {
 
 
 
->>>>>>> 0dacf94a1d3b7d3f255ebdc730e8ceb0a2939d68
 module.exports = {
   turingPrompts,
   piePrompts,
