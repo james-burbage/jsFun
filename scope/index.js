@@ -477,7 +477,12 @@ const scope = {
     putOnShoe();
     // Log C: shoe
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      {'B': 'flipflop'}.
+      {'A': 'undefined'},
+      {'C': 'flipflop'}
+    ];
+    
     return result;
 
     // Annotation:
