@@ -479,8 +479,17 @@ const astronomyPrompts = {
     //     color: 'red' }
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
+    const constellationKeys = Object.keys(constellations);
+    const result = stars.filter(star => {
+      let newStar;
+      constellationKeys.forEach(key => {
+        if(constellations[key].names.includes(star.constellation)) {
+          newStar = star;
+        }
+      })
+      return newStar;
+    })
+    result;
 
     // Annotation:
     // Write your annotation here as a comment
@@ -533,12 +542,7 @@ module.exports = {
   clubPrompts,
   bossPrompts,
   classPrompts,
-<<<<<<< HEAD
-  modPrompts
-};
-=======
   modPrompts,
   kittyPrompts,
   astronomyPrompts
 };
->>>>>>> 0dacf94a1d3b7d3f255ebdc730e8ceb0a2939d68

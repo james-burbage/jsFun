@@ -29,11 +29,35 @@ const scope = {
 
     // Log D: personC
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      {'A': 'Ben'}
+      {'B': 'Cardi B'}
+      {'C': 'Cardi B'}
+      {'D': 'Paul'}
+    ];
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // The variable personA is declared and the value is set to 'Paul'
+    // The variable personB is declared and the value is set to 'Ben'
+    // The variable personC is declared and the value is set to 'Tom'
+    // The function changePerson is declared and saved
+    // changePerson is invoked and the intepreter returns to the function and is executed
+    // The conditional is executed, which is saying if the personA variable is 'Paul', then a person variable is set to 'Cardi B'
+    // The interpreter cannot find personA in the scope of the changePerson function and looks globally
+    // The interpreter finds the personA variable globally and checks to see if the value is set to 'Paul'
+    // Since that conditional is truthy, the interpreter executes the next line of code 
+    // Since there is no person variable set in the scope of changePerson, the interpreter checks globally for the person variabke
+    // The interpreter is unable to find the person variable globally and then creates the person variable and sets it to 'Cardi B'
+    // Still within the changePerson function, the beautifyPerson function is invoked
+    // The interpreter then is asked to log personB which is set to 'Ben' and has not yet been altered
+    // The conditional inside, then checks to see if personB includes 'B', which it does and then executes the next lines of code inside the conditional
+    // personB is then reassigned to the person variable, which was set globally, whose value was 'Cardi B'
+    // personC is then reassigned to personB which is now 'Cardi B'
+    // personC is then console.logged which evaluates to 'Cardi B'
+    // personC is then reassigned to personA, which is still globally set to 'Paul'
+    //personB is logged, and the value is 'Cardi B' because personB was set only globally and the reassignment reassigned the global variable
+    //
   },
 
   exerciseB() {
@@ -74,34 +98,49 @@ const scope = {
     let greeting = 'Hello';
 
     function greetingFunction() {
-      var greeting = 'Yo';
+      var greeting = 'Yo'; //hey
 
       if (greeting === 'Yo') {
         let greeting = 'Howdy';
       }
 
-      // Log A: greeting
+      // Log A: greeting //yo
 
       function newPhrase() {
         greeting = 'Hey';
 
-        // Log B: greeting
+        // Log B: greeting //hey
       }
 
-      newPhrase();
+      newPhrase(); 
 
-      // Log C: greeting
+      // Log C: greeting  //hey
     }
 
     greetingFunction();
 
-    // Log D: greeting
+    // Log D: greeting //hello
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      {'A': 'Yo'}
+      {'B': 'Hey'},
+      {'C': 'Hey'},
+      {'D': 'Hello'}
+    ];
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // first we declared the global variable greeting and assigned it to a value of hello
+    // then we declared a function called greeting function
+    // intrepeter move down to the invocation of the greetingfunction and execute that function
+    // interpreter declare a new variable greeting with a value of 'yo', functionally scoped
+    // interpreter reads the conditional statement and check the functionally scoped variable to see if it has the same value, which it does, and then creates a new variable with set to 'howdy'
+    // the log would return yo because it is checking the functionally scoped variable
+    // newPhrase is declared, and then invoked
+    // interpreter is then told to reassign greeting to hey, does not find the declared variable, and changes the variable declaration in the parent function to hey
+    // interpreter is told to log  B greeting, interpreter cannot greeting in newPhrase, moves to parent function and finds the variable , and logs hey
+    // interpreter is told to log c, finds the variable in the same scope and logs hey
+    // log d is hello and is pointing globally and was never reassigned
   },
 
   exerciseD() {
@@ -142,28 +181,30 @@ const scope = {
     let name = 'Brittany';
 
     function sayName() {
-      let name = 'Pam';
+      let name = 'Pam'; //n
 
       if (name === 'Pam') {
         name = 'Nathaniel';
 
         if (name.length > 0) {
-          let name = 'Brittany';
+          let name = 'Brittany'; //b
         }
 
-        // Log A: name
+        // Log A: name //n
       }
 
-      // Log B: name
+      // Log B: name //n
     }
 
-    // Log C: name
+    // Log C: name //b
 
     sayName();
 
-    // Log D: name
+    // Log D: name //b
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [{
+      c,a,b,d,
+    }];
     return result;
 
     // Annotation:
