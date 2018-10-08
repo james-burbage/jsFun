@@ -6,6 +6,47 @@ const { clubs } = require("./datasets/clubs");
 const { classrooms } = require("./datasets/classrooms");
 const { mods } = require("./datasets/mods");
 const { bosses, sidekicks } = require("./datasets/bosses");
+const { breweries } = require("./datasets/breweries");
+
+// DATASET: breweries from ./datasets/breweries
+const breweryPrompts = {
+  getBeerCount() {
+    // Return the total beer count of all beers for every brewery e.g.
+    // 35
+
+    const result = "REPLACE WITH YOUR RESULT HERE";
+    return result;
+
+    // Annotation:
+    // Write your annotation here as a comment
+  },
+
+  getBreweryBeerCount() {
+    // Return an array of objects where each object has the name of a brewery
+    // and the count of the beers that brewery has e.g.
+    // [
+    //  { name: 'Little Machine Brew', beerCount: 11 }
+    // ]
+
+    const result = "REPLACE WITH YOUR RESULT HERE";
+    return result;
+
+    // Annotation:
+    // Write your annotation here as a comment
+  },
+
+  findHighestAbvBeer() {
+    // Return the beer which has the highest ABV of all beers
+    // e.g.
+    // { name: 'Barrel Aged Nature\'s Sweater', type: 'Barley Wine', abv: 10.9, ibu: 40 }
+
+    const result = "REPLACE WITH YOUR RESULT HERE";
+    return result;
+
+    // Annotation:
+    // Write your annotation here as a comment
+  }
+};
 
 // DATASET: instructors, cohorts from ./datasets/turing
 const turingPrompts = {
@@ -27,7 +68,7 @@ const turingPrompts = {
       newInstructor.studentCount = matchingCohort.studentCount;
       return newInstructor;
     });
-    result;
+    return result;
 
     // Annotation:
     // Write your annotation here as a comment
@@ -179,7 +220,7 @@ const cakePrompts = {
       });
       return acc;
     }, []);
-    result;
+    return result;
 
     // Annotation:
     // Write your annotation here as a comment
@@ -205,7 +246,7 @@ const cakePrompts = {
       });
       return acc;
     }, {});
-    result;
+    return result;
 
     // Annotation:
     // Write your annotation here as a comment
@@ -224,7 +265,7 @@ const cakePrompts = {
       let obj = { flavor: cake.cakeFlavor, inStock: cake.inStock };
       return obj;
     });
-    result;
+    return result;
 
     // Annotation:
     // Write your annotation here as a comment
@@ -238,7 +279,7 @@ const cakePrompts = {
       acc += cake.inStock;
       return acc;
     }, 0);
-    result;
+    return result;
 
     // Annotation:
     // Write your annotation here as a comment
@@ -298,7 +339,7 @@ const piePrompts = {
     const result = pie.map(slice => {
       console.log(slice.ingredients);
     });
-    result;
+    return result;
 
     // Annotation:
     // Write your annotation here as a comment
@@ -336,7 +377,7 @@ const clubPrompts = {
       });
       return accu;
     }, {});
-    result;
+    return undefined;
 
     // Annotation:
     // Write your annotation here as a comment
@@ -370,7 +411,7 @@ const bossPrompts = {
       }, 0);
       return { bossName: bosses[boss].name, sidekickLoyalty: loyaltyNum };
     });
-    result;
+    return result;
 
     // Annotation:
     // Write your annotation here as a comment
@@ -389,13 +430,13 @@ const kittyPrompts = {
     // Return an array of just the names of kitties who are orange e.g.
     // ['Tiger', 'Snickers']
 
-    const orangeKittens = kitten
+    const result = kitties
       .filter(kitten => {
         return kitten.color === "orange";
       })
       .map(kitten => kitten.name);
 
-    orangeKittens;
+    return result;
 
     // Annotation:
     // Write your annotation here as a comment
@@ -404,10 +445,10 @@ const kittyPrompts = {
   sortByAge() {
     // Sort the kitties by their age
 
-    const result = kitten.sort((a, b) => {
+    const result = kitties.sort((a, b) => {
       return b.age - a.age;
     });
-    result;
+    return result;
 
     // Annotation:
     // Write your annotation here as a comment
@@ -431,7 +472,7 @@ const kittyPrompts = {
       kitten.age += 2;
       return kitten;
     });
-    result;
+    return result;
     // Annotation:
     // Write your annotation here as a comment
   }
@@ -471,7 +512,7 @@ const astronomyPrompts = {
       });
       return newStar;
     });
-    result;
+    return result;
 
     // Annotation:
     // Write your annotation here as a comment
@@ -517,6 +558,7 @@ const astronomyPrompts = {
 };
 
 module.exports = {
+  breweryPrompts,
   turingPrompts,
   piePrompts,
   clubPrompts,
