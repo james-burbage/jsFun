@@ -1,19 +1,19 @@
 const scope = {
   exerciseA() {
-    let personA = 'Paul'
-    let personB = 'Ben'
-    let personC = 'Tom'
+    let personA = "Paul";
+    let personB = "Ben";
+    let personC = "Tom";
 
     function changePerson() {
-      if (personA === 'Paul') {
-        person = 'CardiB';
+      if (personA === "Paul") {
+        person = "CardiB";
         beautifyPerson();
       }
 
       function beautifyPerson() {
         // Log A: personB
-        
-        if (personB.includes('B')) {
+
+        if (personB.includes("B")) {
           personB = person;
           personC = personB;
           // Log B: personC
@@ -30,10 +30,10 @@ const scope = {
     // Log D: personC
 
     const result = [
-      {'A': 'Ben'}
-      {'B': 'Cardi B'}
-      {'C': 'Cardi B'}
-      {'D': 'Paul'}
+      { A: "Ben" },
+      { B: "Cardi B" },
+      { C: "Cardi B" },
+      { D: "Paul" }
     ];
     return result;
 
@@ -46,7 +46,7 @@ const scope = {
     // The conditional is executed, which is saying if the personA variable is 'Paul', then a person variable is set to 'Cardi B'
     // The interpreter cannot find personA in the scope of the changePerson function and looks globally
     // The interpreter finds the personA variable globally and checks to see if the value is set to 'Paul'
-    // Since that conditional is truthy, the interpreter executes the next line of code 
+    // Since that conditional is truthy, the interpreter executes the next line of code
     // Since there is no person variable set in the scope of changePerson, the interpreter checks globally for the person variabke
     // The interpreter is unable to find the person variable globally and then creates the person variable and sets it to 'Cardi B'
     // Still within the changePerson function, the beautifyPerson function is invoked
@@ -87,7 +87,7 @@ const scope = {
 
     // Log D: number
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = "REPLACE WITH YOUR RESULT HERE";
     return result;
 
     // Annotation:
@@ -95,24 +95,24 @@ const scope = {
   },
 
   exerciseC() {
-    let greeting = 'Hello';
+    let greeting = "Hello";
 
     function greetingFunction() {
-      var greeting = 'Yo'; //hey
+      var greeting = "Yo"; //hey
 
-      if (greeting === 'Yo') {
-        let greeting = 'Howdy';
+      if (greeting === "Yo") {
+        let greeting = "Howdy";
       }
 
       // Log A: greeting //yo
 
       function newPhrase() {
-        greeting = 'Hey';
+        greeting = "Hey";
 
         // Log B: greeting //hey
       }
 
-      newPhrase(); 
+      newPhrase();
 
       // Log C: greeting  //hey
     }
@@ -121,12 +121,7 @@ const scope = {
 
     // Log D: greeting //hello
 
-    const result = [
-      {'A': 'Yo'}
-      {'B': 'Hey'},
-      {'C': 'Hey'},
-      {'D': 'Hello'}
-    ];
+    const result = [{ A: "Yo" }, { B: "Hey" }, { C: "Hey" }, { D: "Hello" }];
     return result;
 
     // Annotation:
@@ -144,33 +139,33 @@ const scope = {
   },
 
   exerciseD() {
-    let greeting = 'howdy';
+    let greeting = "howdy";
 
     const greetingGenerator = () => {
-      let greeting = 'hi';
+      let greeting = "hi";
 
-      if (greeting === 'hi') {
-        let greeting = 'hello';
+      if (greeting === "hi") {
+        let greeting = "hello";
       }
 
       // Log A: greeting
 
-      const newGreeting = ()  => {
-        greeting = 'welcome';
+      const newGreeting = () => {
+        greeting = "welcome";
 
         // Log B: greeting
-      }
+      };
 
       newGreeting();
 
       // Log C: greeting
-    }
+    };
 
     greetingGenerator();
 
     // Log D: greeting
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = "REPLACE WITH YOUR RESULT HERE";
     return result;
 
     // Annotation:
@@ -178,16 +173,16 @@ const scope = {
   },
 
   exerciseE() {
-    let name = 'Brittany';
+    let name = "Brittany";
 
     function sayName() {
-      let name = 'Pam'; //n
+      let name = "Pam"; //n
 
-      if (name === 'Pam') {
-        name = 'Nathaniel';
+      if (name === "Pam") {
+        name = "Nathaniel";
 
         if (name.length > 0) {
-          let name = 'Brittany'; //b
+          let name = "Brittany"; //b
         }
 
         // Log A: name //n
@@ -202,9 +197,14 @@ const scope = {
 
     // Log D: name //b
 
-    const result = [{
-      c,a,b,d,
-    }];
+    const result = [
+      {
+        c,
+        a,
+        b,
+        d
+      }
+    ];
     return result;
 
     // Annotation:
@@ -212,22 +212,21 @@ const scope = {
   },
 
   exerciseF() {
-    var dog = 'Spot';
+    var dog = "Spot";
 
     function petDog() {
       // Log A: dog
 
-      if (dog === 'Spot') {
-        let dog = 'Fluffy';
+      if (dog === "Spot") {
+        let dog = "Fluffy";
       }
 
       function rollOver() {
         // Log B: dog
 
-        dog = 'Biscuit';
+        dog = "Biscuit";
 
         // Log C: dog
-
       }
 
       rollOver();
@@ -239,7 +238,7 @@ const scope = {
 
     // Log E: dog
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = "REPLACE WITH YOUR RESULT HERE";
     return result;
 
     // Annotation:
@@ -247,16 +246,15 @@ const scope = {
   },
 
   exerciseG() {
-    var fruit = 'apple';
+    var fruit = "apple";
 
     function eatFruit() {
-
-      if (fruit !== 'kiwi') {
-        var fruit = 'mango';
+      if (fruit !== "kiwi") {
+        var fruit = "mango";
 
         if (fruit) {
           // Log A: fruit
-          const fruit = 'strawberry';
+          const fruit = "strawberry";
         }
 
         // Log B: fruit
@@ -265,11 +263,11 @@ const scope = {
       // Log C: fruit
     }
 
-    eatFruit()
+    eatFruit();
 
     // Log D: fruit
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = "REPLACE WITH YOUR RESULT HERE";
     return result;
 
     // Annotation:
@@ -287,7 +285,7 @@ const scope = {
       if (num < 5) {
         const num = 9;
 
-        fn2(num)
+        fn2(num);
 
         const newNum = num;
 
@@ -297,19 +295,19 @@ const scope = {
       newNum = num;
 
       // Log C: newNum
-    }
+    };
 
-    const fn2 = function(num){
+    const fn2 = function(num) {
       // Log D: num
 
       num = num + 1;
 
       // Log E: num
-    }
+    };
 
     fn1();
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = "REPLACE WITH YOUR RESULT HERE";
     return result;
 
     // Annotation:
@@ -330,7 +328,7 @@ const scope = {
       }
 
       // Log C: hunger
-    };
+    }
 
     eatSnack();
 
@@ -340,7 +338,7 @@ const scope = {
     eatSnack();
     // Log E: hunger
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = "REPLACE WITH YOUR RESULT HERE";
     return result;
 
     // Annotation:
@@ -348,40 +346,40 @@ const scope = {
   },
 
   exerciseJ() {
-    let sandwich = 'ketchup sandwich';
+    let sandwich = "ketchup sandwich";
 
     // Log A: sandwich
 
     const addChipotle = () => {
       // Log B: toppings
-      var toppings = 'chipotle sauce';
+      var toppings = "chipotle sauce";
 
-      if (toppings === 'chipotle sauce') { 
-        sandwich = 'not a mediocre sandwich';
+      if (toppings === "chipotle sauce") {
+        sandwich = "not a mediocre sandwich";
       }
 
       // Log C: sandwich
-    }
+    };
 
     const addCheese = () => {
-      let cheeseTopping = 'gouda';
+      let cheeseTopping = "gouda";
       // Log D: cheeseTopping
 
       const shesTheManReference = () => {
-        amandaBynes = "National Treasure"
-      }
+        amandaBynes = "National Treasure";
+      };
 
       shesTheManReference();
-    }
+    };
 
-    cheeseTopping = 'kraft';
+    cheeseTopping = "kraft";
     addCheese();
 
     addChipotle();
     // Log E: sandwich
     // Log F: amandaBynes
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = "REPLACE WITH YOUR RESULT HERE";
     return result;
 
     // Annotation:
@@ -392,17 +390,17 @@ const scope = {
     let num = 10;
 
     function foo() {
-        if (num > 5) {
-           num = 7;
-        }
-        // Log A: num
+      if (num > 5) {
+        num = 7;
+      }
+      // Log A: num
     }
 
     foo();
 
     // Log B: num
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = "REPLACE WITH YOUR RESULT HERE";
     return result;
 
     // Annotation:
@@ -434,7 +432,7 @@ const scope = {
 
     // Log C: grade
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = "REPLACE WITH YOUR RESULT HERE";
     return result;
 
     // Annotation:
@@ -460,7 +458,7 @@ const scope = {
 
     // Log D: num
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = "REPLACE WITH YOUR RESULT HERE";
     return result;
 
     // Annotation:
@@ -468,29 +466,27 @@ const scope = {
   },
 
   exerciseN() {
-    var instructor = 'Pam';
+    var instructor = "Pam";
 
     function changeInstructor() {
-
       // Log A: instructor
 
-      if (instructor === 'Brittany') {
-        const instructor = 'Nathaniel';
+      if (instructor === "Brittany") {
+        const instructor = "Nathaniel";
       } else {
-        let instructor = 'Brittany';
+        let instructor = "Brittany";
       }
 
       // Log B: instructor
 
       function rename() {
-        instructor = 'Louisa';
+        instructor = "Louisa";
         // Log C: instructor
       }
 
       rename();
 
       // Log D: instructor
-
     }
 
     // Log E: instructor
@@ -499,7 +495,7 @@ const scope = {
 
     // Log F: instructor
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = "REPLACE WITH YOUR RESULT HERE";
     return result;
 
     // Annotation:
@@ -507,28 +503,24 @@ const scope = {
   },
 
   exerciseO() {
-    var shoe = 'flipflop';
+    var shoe = "flipflop";
 
     function putOnShoe() {
       // Log A: shoe
-      var shoe = 'boot';
+      var shoe = "boot";
     }
 
     // Log B: shoe
     putOnShoe();
     // Log C: shoe
 
-    const result = [
-      {'B': 'flipflop'}.
-      {'A': 'undefined'},
-      {'C': 'flipflop'}
-    ];
-    
+    const result = [{ B: "flipflop" }, { A: "undefined" }, { C: "flipflop" }];
+
     return result;
 
     // Annotation:
     // Write your annotation here as a comment
   }
-}
+};
 
 module.exports = scope;

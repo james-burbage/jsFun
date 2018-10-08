@@ -1,11 +1,11 @@
-const { instructors, cohorts } = require('./datasets/turing');
-const { constellations, stars } = require('./datasets/astronomy');
-const { cakes } = require('./datasets/cakes');
-const { pie } = require('./datasets/pie');
-const { clubs } = require('./datasets/clubs');
-const { classrooms } = require('./datasets/classrooms');
-const { mods } = require('./datasets/mods');
-const { bosses, sidekicks } = require('./datasets/bosses');
+const { instructors, cohorts } = require("./datasets/turing");
+const { constellations, stars } = require("./datasets/astronomy");
+const { cakes } = require("./datasets/cakes");
+const { pie } = require("./datasets/pie");
+const { clubs } = require("./datasets/clubs");
+const { classrooms } = require("./datasets/classrooms");
+const { mods } = require("./datasets/mods");
+const { bosses, sidekicks } = require("./datasets/bosses");
 
 // DATASET: instructors, cohorts from ./datasets/turing
 const turingPrompts = {
@@ -166,25 +166,26 @@ const classPrompts = {
 
 // DATASET: cakes from ./datasets/cakes
 const cakePrompts = {
+  allToppings() {
     // Return an array of all unique toppings (no duplicates) needed to bake
     // every cake in the dataset e.g.
     // ['dutch process cocoa', 'toasted sugar', 'smoked sea salt', 'berries', ..etc]
 
     const result = cakes.reduce((acc, cake) => {
-      cake.toppings.forEach((topping) => {
-        if(!acc.includes(topping)) {
+      cake.toppings.forEach(topping => {
+        if (!acc.includes(topping)) {
           acc.push(topping);
         }
-      })
+      });
       return acc;
     }, []);
     result;
 
     // Annotation:
     // Write your annotation here as a comment
-
+  },
   groceryList() {
-// I need to make a grocery list. Please give me an object where the keys are
+    // I need to make a grocery list. Please give me an object where the keys are
     // each topping, and the values are the amount of that topping I need to buy e.g.
     // {
     //    'dutch process cocoa': 1,
@@ -195,14 +196,14 @@ const cakePrompts = {
     // }
 
     const result = cakes.reduce((acc, cake) => {
-      cake.toppings.forEach((topping) => {
+      cake.toppings.forEach(topping => {
         if (!acc[topping]) {
           acc[topping] = 1;
         } else {
-          acc[topping] ++;
+          acc[topping]++;
         }
-      })
-      return acc
+      });
+      return acc;
     }, {});
     result;
 
@@ -219,9 +220,9 @@ const cakePrompts = {
     //    ..etc
     // ]
 
-    const result = cakes.map((cake) => {
-      let obj = {flavor: cake.cakeFlavor, inStock: cake.inStock}
-      return obj
+    const result = cakes.map(cake => {
+      let obj = { flavor: cake.cakeFlavor, inStock: cake.inStock };
+      return obj;
     });
     result;
 
@@ -235,7 +236,7 @@ const cakePrompts = {
 
     const result = cakes.reduce((acc, cake) => {
       acc += cake.inStock;
-      return acc
+      return acc;
     }, 0);
     result;
 
@@ -293,12 +294,11 @@ const piePrompts = {
     //   cinnamon: 50,
     //   sugar: 100
     // }
-    
-    const result = pie.map((slice) => {
-      console.log(slice.ingredients)
+
+    const result = pie.map(slice => {
+      console.log(slice.ingredients);
     });
     result;
-
 
     // Annotation:
     // Write your annotation here as a comment
@@ -314,7 +314,7 @@ const piePrompts = {
 // DATASET: clubs from ./datasets/clubs
 const clubPrompts = {
   membersBelongingToClubs() {
-// Create an object whose keys are the names of people, and whose values are
+    // Create an object whose keys are the names of people, and whose values are
     // arrays that include the names of the clubs that person is a part of. e.g.
     // {
     //   Louisa: ['Drama', 'Art'],
@@ -322,19 +322,20 @@ const clubPrompts = {
     //   ...etc
     // }
 
-
     const result = clubs.reduce((accu, club) => {
       club.members.forEach(member => {
         if (!accu[member]) {
-          accu[member] = clubs.filter(club => {
-            if (club.members.includes(member)) {
-              return club
-            }
-          }).map((club) => club.club);
+          accu[member] = clubs
+            .filter(club => {
+              if (club.members.includes(member)) {
+                return club;
+              }
+            })
+            .map(club => club.club);
         }
-      })
-      return accu
-    }, {})
+      });
+      return accu;
+    }, {});
     result;
 
     // Annotation:
@@ -359,37 +360,28 @@ const bossPrompts = {
     //   { bossName: 'Scar', sidekickLoyalty: 16 }
     // ]
 
-    const bossKeys = Object.keys(bosses)
-    const result = bossKeys.map((boss) => {
+    const bossKeys = Object.keys(bosses);
+    const result = bossKeys.map(boss => {
       let loyaltyNum = sidekicks.reduce((accu, sidekick) => {
         if (sidekick.boss === bosses[boss].name) {
           accu += sidekick.loyaltyToBoss;
         }
         return accu;
-      }, 0)
+      }, 0);
       return { bossName: bosses[boss].name, sidekickLoyalty: loyaltyNum };
     });
-    result.reverse()
+    result;
 
     // Annotation:
     // Write your annotation here as a comment
   }
 };
 
-
-
-
-
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
-
-
-
-
-
 
 // DATASET: kitties from ./datasets/kitties
 const kittyPrompts = {
@@ -397,32 +389,32 @@ const kittyPrompts = {
     // Return an array of just the names of kitties who are orange e.g.
     // ['Tiger', 'Snickers']
 
-    const orangeKittens = kitties.filter((kitten) => {
-      return kitten.color === 'orange';
-    }).map(kitten => kitten.name);
+    const orangeKittens = kitten
+      .filter(kitten => {
+        return kitten.color === "orange";
+      })
+      .map(kitten => kitten.name);
 
     orangeKittens;
-
-    
 
     // Annotation:
     // Write your annotation here as a comment
   },
 
   sortByAge() {
-        // Sort the kitties by their age
+    // Sort the kitties by their age
 
-        const result = kitties.sort((a,b) => {
-          return b.age - a.age;
-        });
-        result;
-    
-        // Annotation:
-        // Write your annotation here as a comment
+    const result = kitten.sort((a, b) => {
+      return b.age - a.age;
+    });
+    result;
+
+    // Annotation:
+    // Write your annotation here as a comment
   },
 
   growUp() {
-        // Return an array of kitties who have all grown up by 2 years e.g.
+    // Return an array of kitties who have all grown up by 2 years e.g.
     // [{
     //   name: 'Felicia',
     //   age: 4,
@@ -434,43 +426,29 @@ const kittyPrompts = {
     //   color: 'orange'
     // },
     // ...etc]
-<<<<<<< HEAD
 
-    const result = kitties.map((kitten) => {
+    const result = kitties.map(kitten => {
       kitten.age += 2;
-      return kitten
+      return kitten;
     });
     result;
     // Annotation:
     // Write your annotation here as a comment
-
-  };
-=======
   }
->>>>>>> 9aa4410885adf164f86fa8167c072fcd5bd4fb0c
 };
 
-
-
-
-
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
-
-
-
-
-
 
 // DATASET: bosses, sidekicks from ./datasets/bosses
 const astronomyPrompts = {
   starsInConstellations() {
     // Return an array of all the stars that appear in any of the constellations
     // listed in the constellations object e.g.
-    // [ 
+    // [
     //   { name: 'Rigel',
     //     visualMagnitude: 0.13,
     //     constellation: 'Orion',
@@ -487,12 +465,12 @@ const astronomyPrompts = {
     const result = stars.filter(star => {
       let newStar;
       constellationKeys.forEach(key => {
-        if(constellations[key].names.includes(star.constellation)) {
+        if (constellations[key].names.includes(star.constellation)) {
           newStar = star;
         }
-      })
+      });
       return newStar;
-    })
+    });
     result;
 
     // Annotation:
@@ -510,7 +488,7 @@ const astronomyPrompts = {
     //   red: [{obj}]
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = "REPLACE WITH YOUR RESULT HERE";
     return result;
 
     // Annotation:
@@ -530,15 +508,13 @@ const astronomyPrompts = {
     //   'Orion',
     //   'Centaurus' ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = "REPLACE WITH YOUR RESULT HERE";
     return result;
 
     // Annotation:
     // Write your annotation here as a comment
   }
 };
-
-
 
 module.exports = {
   turingPrompts,
