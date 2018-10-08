@@ -7,18 +7,22 @@ const { classrooms } = require("./datasets/classrooms");
 const { mods } = require("./datasets/mods");
 const { bosses, sidekicks } = require("./datasets/bosses");
 const { breweries } = require("./datasets/breweries");
+const { kitties } = require("./datasets/kitties");
 
-// DATASET: breweries from ./datasets/breweries
+// DATASET: breweries from ./datasets/breweriesconst breweryPrompts = {
 const breweryPrompts = {
   getBeerCount() {
     // Return the total beer count of all beers for every brewery e.g.
-    // 35
-
-    const result = "REPLACE WITH YOUR RESULT HERE";
+    // 40
+    const result = breweries.reduce((acc, brewery) => {
+      acc += brewery.beers.length;
+      return acc;
+    }, 0);
     return result;
-
     // Annotation:
-    // Write your annotation here as a comment
+    //I needed to add each beer for each brewery so I needed to add it to a value of 0, which was my acc.
+    // I first needed to iterate through the breweries array to get access to each brewery data set.
+    // I added the length of beers in the beer array to get the number I needed from each brewery.
   },
 
   getBreweryBeerCount() {
@@ -28,11 +32,15 @@ const breweryPrompts = {
     //  { name: 'Little Machine Brew', beerCount: 11 }
     // ]
 
-    const result = "REPLACE WITH YOUR RESULT HERE";
+    const result = breweries.map(brewery => {
+      return { name: brewery.name, beerCount: brewery.beers.length };
+    });
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // I needed to iterate into the breweries array to get access to each brewery.
+    // I created the object and passed the breweries name dynamically.
+    // I then added the beers.length into the object as well.
   },
 
   findHighestAbvBeer() {
